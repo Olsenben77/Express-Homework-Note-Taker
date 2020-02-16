@@ -7,6 +7,8 @@ const fs = require("fs");
 const util = require("util");
 const express = require("express");
 const userNote = require("./notes").userNote;
+const uuid = require("node-uuid");
+const httpContext = require("express-http-context");
 
 //setup
 const app = express();
@@ -15,6 +17,13 @@ const PORT = 3000;
 //setup express app
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(httpContext.middleware);
+
+//Assign unique identifier for each request
+app.use(function(req, res, next) {
+  httpContext.set("reqId", uuid.v1());
+  next();
+});
 
 // Access query parameter
 

@@ -12,9 +12,11 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
+    "express-http-context": "^1.2.3",
     "fs": "0.0.1-security",
     "path": "^0.12.7",
     "util": "^0.12.1",
+    "uuid": "^3.4.0",
     "watch": "^1.0.2"
   }
 }

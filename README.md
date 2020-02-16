@@ -21,3 +21,5 @@ Integrating express into locally created servers is an integeral part of program
 https://expressjs.com/en/4x/api.html#app.METHOD
 
 https://www.npmjs.com/package/json-server
+
+https://solidgeargroup.com/express-logging-global-unique-request-identificator-nodejs/
