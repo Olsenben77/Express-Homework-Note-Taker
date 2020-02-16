@@ -61,6 +61,9 @@ app.post("/api/notes", (req, res) => {
     }
   });
 });
+app.delete("/api/notes:id", (req, res) => {
+  res.send("Note Deleted");
+});
 
 //listener
 app.listen(PORT, () => console.log(`App listening on port ${PORT}`));
