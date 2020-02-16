@@ -6,6 +6,7 @@ const path = require("path");
 const fs = require("fs");
 const util = require("util");
 const express = require("express");
+const userNote = require("./notes").userNote;
 
 //setup
 const app = express();
@@ -14,6 +15,19 @@ const PORT = 3000;
 //setup express app
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+// Access query parameter
+
+let userNote = req.query.userNote;
+let id = await userNote
+  .findAll()
+  .paginate({ userNote: userNote })
+  .exec();
+
+//Return ids
+res.render("index", {
+  id: id
+});
 
 //routes
 
@@ -29,7 +43,6 @@ app.get("*", (req, res) => {
 
 //Create API routes
 app.get("/api/notes", (req, res) => {
-  let waitlist;
   fs.readFile("db.json", "utf8", (err, data) => {
     if (err) throw err;
     notes = data;
